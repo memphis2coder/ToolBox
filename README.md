@@ -1,3 +1,8 @@
+// steps
+1. npm i node-sass
+2. npm i react-icons
+3. npm i react-router-dom
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

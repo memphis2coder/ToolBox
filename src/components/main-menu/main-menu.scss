@@ -1,0 +1,32 @@
+.main-menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    background-color: lightblue;
+    .main-menu-logo {
+        font-size: 20px;
+        a {
+            color: red;
+        }
+    }
+
+    ul {
+        display: flex;
+        li {
+            margin-left: 20px;
+        }
+        a {
+            color: black;
+        }
+    }
+
+    .menu-burger {
+        font-size: 20px;
+        @media screen and (min-width: 500px) {
+            display: none;
+        }
+    }
+
+};
