@@ -5,26 +5,18 @@ import {AiOutlineMenu} from 'react-icons/ai';
 
 function mainMenu() {
     return (
-        <div className='main-menu-container'>
-            <div className="main-menu-logo">
-                <Link to='/'>
-                    LOGO
-                </Link>
+        <header className='header'>
+            <div className="logo-container">
+                <Link className='logo' to='/'>LOGO</Link>
             </div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to='/navbars'>Navbars</Link>
-                    </li>
-                    <li>
-                        <Link to='/buttons'>Buttons</Link>
-                    </li>
-                    <li>
-                        <AiOutlineMenu className="menu-burger"/>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                <nav className="nav">
+                    <Link className="nav-link" to='/navbars'>Navbars</Link>
+                    <Link className="nav-link" to='/buttons'>Buttons</Link>
+                </nav>
+                    <span>
+                        <AiOutlineMenu className="burger"/>
+                    </span> 
+        </header>
     )
 }
 
