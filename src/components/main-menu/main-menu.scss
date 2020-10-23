@@ -1,28 +1,27 @@
 .header {
-    display: grid;
-    grid-template-areas: "logo nav burger";
+    display: flex;
+    flex-wrap: wrap;
     background-color: lightslategrey;
-    padding: 20px 50px;
     justify-content: space-between;
+    min-height: 50px;
+    align-items: center;
+    padding: 0 50px;
 }
 
 .logo {
-    grid-area: logo;
+    color: white;
+    font-weight: bold;
+    order: 1;
 }
 
 .nav {
-    display: grid;
-    grid-area: nav;
-    grid-template-columns: repeat(2, auto);
-    align-items: center;
-    justify-items: center;
-    
+    order: 3;
+    display: inline;
     .nav-link {
         color: white;
         font-weight: bold;
-        margin-left: 50px;
         transition: 0.5s;
-
+        margin-left: 20px;
         &:hover {
             color: black;
             transform: scale(1.1);
@@ -31,24 +30,40 @@
 
 };
 
-// mobile menu
 .burger {
     display: none;
-    grid-area: burger
 }
 
+// mobile menu
 @media (max-width: 700px) {
     .header {
-        grid-template-columns: "logo burger nav nav";
+        padding: 10px 25px;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        
+        .logo {
+            order: 1;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+
+            .nav-link {
+                display: none;
+                padding: 10px 0;
+            }
+        }
+
+        .burger {
+            display: flex;
+            font-size: 25px;
+            color: white;
+            cursor: pointer;
+        }
     }
 
-    .nav {
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: none;
-        grid-row-gap: 20px;
-    }
-
-    .burger {
-        display: inline;
-    }
 }

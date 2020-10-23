@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './main-menu.scss';
 import {Link} from 'react-router-dom';
 import {AiOutlineMenu} from 'react-icons/ai';
 
 function mainMenu() {
+    
+
     return (
         <header className='header'>
             <div className="logo-container">
@@ -15,7 +17,7 @@ function mainMenu() {
                 </nav>
                     <span>
                         <AiOutlineMenu className="burger"/>
-                    </span> 
+                    </span>
         </header>
     )
 }

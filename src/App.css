@@ -16,3 +16,12 @@ a {
 li {
   list-style-type: none;
 }
+
+/* App.css styles */
+.App {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 100%;
+  width: 100%;
+}
