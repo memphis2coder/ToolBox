@@ -8,7 +8,7 @@ import './App.css';
 // // components
 // import MainMenu from './components/main-menu/main-menu';
 // import Sidebar from './components/sidebar/sidebar';
-import Title from './Title.js';
+import TodoList from './components/todo-list/TodoList.js';
 
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
             </Route>
           </Switch>
       </Router> */}
-      <Title />
+      <TodoList />
     </div>
   );
 }
