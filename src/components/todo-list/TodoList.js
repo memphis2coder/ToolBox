@@ -1,35 +1,48 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './TodoList.scss';
 
-// functional component
-// this is a standard functional component
 function TodoList () {
-    const [todo, updateTodo] = useState('');
-    const [list, updateList] = useState('');
+    const LIST = [
+        {
+            id: 0,
+            title: "Antonio",
+            job: "ups"
+        },
+        {
+            id: 1,
+            title: "andy",
+            job: "web"
+        },
+        {
+            id: 2,
+            title: "kim",
+            job: "react"
+        }
+    ];
 
-    function handleClick(e) {
-        e.preventDefault();
-        alert({updateTodo})
-    };
+    const [list, setList] = useState(LIST);
 
+    const onRemoveItem = () => {
+        // remove item from list
+
+        // return the new list
+        console.log('clicked')
+    }
 
     return (
         <div className='todo'>
-            <h2>Todo List React</h2>
-                <div className="todo-input-container">
-                    <input 
-                        type="text" 
-                        value={todo} 
-                        onChange={e => updateTodo(e.target.value)}
-                    />
-                    <button onClick={handleClick}>Add</button>
-                </div>
-                <div>
-                    {
-                        
-                    }
-                </div>
-            <h3>{todo}</h3>
+            <ul>
+            {
+                list.map(item => (
+                    <li key={item.id}>
+                        <span>title: {item.title}</span>
+                        <div>job: {item.job}</div>
+                        <button onClick={() => onRemoveItem(item.id)} type="button">remove</button>
+                        <br/>
+                    </li>
+                ))
+            }
+            </ul>
         </div>
     )
 };
