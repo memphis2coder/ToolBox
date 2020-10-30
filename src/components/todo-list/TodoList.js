@@ -20,29 +20,45 @@ function TodoList () {
         }
     ];
 
-    const [list, setList] = useState(LIST);
+    const [isOn, setIsOn] = useState(false);
+    const [timer, setTime] = useState(0);
 
-    const onRemoveItem = () => {
-        // remove item from list
+    useEffect(() => {
+        let interval;
 
-        // return the new list
-        console.log('clicked')
-    }
+        if (isOn) {
+            interval = setInterval(() => setTime(timer + 1), 1000)
+        }
+        return () => clearInterval(interval)
+    },[isOn, timer]);
 
+    const onReset = (() => {
+        setIsOn(false);
+        setTime(0);
+    });
+    
     return (
         <div className='todo'>
-            <ul>
-            {
-                list.map(item => (
-                    <li key={item.id}>
-                        <span>title: {item.title}</span>
-                        <div>job: {item.job}</div>
-                        <button onClick={() => onRemoveItem(item.id)} type="button">remove</button>
-                        <br/>
-                    </li>
-                ))
-            }
-            </ul>
+            <div>
+            <h1>{timer}</h1>
+
+                {!isOn && (
+                    <button type='button' onClick={() => setIsOn(true)}>
+                        Start
+                    </button>
+                    )}
+
+                {isOn && (
+                    <button type='button' onClick={() => setIsOn(false)}>
+                        Stop
+                    </button>
+                )}
+
+                <button onClick={onReset}>
+                    reset
+                </button>
+
+            </div>
         </div>
     )
 };
