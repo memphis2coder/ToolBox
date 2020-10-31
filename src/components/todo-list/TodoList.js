@@ -2,61 +2,76 @@ import React, {useState, useEffect} from 'react';
 import './TodoList.scss';
 
 function TodoList () {
+    // fake data
     const LIST = [
         {
             id: 0,
-            title: "Antonio",
-            job: "ups"
+            animal: "dog",
+            color: "brown"
         },
         {
             id: 1,
-            title: "andy",
-            job: "web"
+            animal: "cat",
+            color: "white"
         },
         {
             id: 2,
-            title: "kim",
-            job: "react"
+            animal: "bird",
+            color: "green"
         }
     ];
+    
+    // state
+    const [list, setList] = useState(LIST)
+    const [input, setInput] = useState('');
+    
+    // function to record the input data
+    const handleChange = (e) => {
+        // track input fields state
+        let input = e.target.value;
+        setInput(input);
+        console.log(input);
+    }
 
-    const [isOn, setIsOn] = useState(false);
-    const [timer, setTime] = useState(0);
+    // function to add to list
+    const handleAdd = () => {
 
-    useEffect(() => {
-        let interval;
+    }
 
-        if (isOn) {
-            interval = setInterval(() => setTime(timer + 1), 1000)
-        }
-        return () => clearInterval(interval)
-    },[isOn, timer]);
-
-    const onReset = (() => {
-        setIsOn(false);
-        setTime(0);
-    });
+     // function to remove list item
+    const onItemRemove = (id) => {
+        // remove clicked item
+        const newList = list.filter((item) => item.id !== id);
+        // return a new list
+        setList(newList)
+    };
     
     return (
         <div className='todo'>
+
             <div>
-            <h1>{timer}</h1>
+                <form>
+                    <input type="text" onChange={handleChange} value={input}/>
+                    <button>add</button>
+                </form>
+            </div>
 
-                {!isOn && (
-                    <button type='button' onClick={() => setIsOn(true)}>
-                        Start
-                    </button>
-                    )}
-
-                {isOn && (
-                    <button type='button' onClick={() => setIsOn(false)}>
-                        Stop
-                    </button>
-                )}
-
-                <button onClick={onReset}>
-                    reset
-                </button>
+            <div>
+                <ul>
+                    {
+                        list.map((item) => (
+                            <li key={item.id}>
+                                <span>animal: {item.animal}</span>
+                                <br />
+                                <span>color: {item.color}</span>
+                                    <div>
+                                        <button onClick={() => onItemRemove(item.id)}>remove</button>
+                                    </div>
+                                <br/>
+                            </li>
+                        ))
+                    }
+                </ul>
 
             </div>
         </div>
